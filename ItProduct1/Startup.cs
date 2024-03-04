@@ -39,19 +39,34 @@ namespace ItProduct1
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseRouting();
+            app.UseRouting(); // Add this line to configure routing middleware
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "about",
+                    pattern: "/About",
+                    defaults: new { controller = "Home", action = "About" });
+
+
+                endpoints.MapControllerRoute(
+    name: "catalogue",
+    pattern: "/catalogue",
+    defaults: new { controller = "Product", action = "Index" });
             });
         }
+
+
     }
 }

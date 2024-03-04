@@ -1,11 +1,7 @@
 ﻿using ItProduct1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ItProduct1.Controllers
 {
@@ -23,9 +19,31 @@ namespace ItProduct1.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddProduct(Product product)
+        {
+            // Add logic to save the product to a database or any other storage
+            // For simplicity, you can store it in a list for now
+            // For production, consider using a database
+            // product.Id = GetNextProductId(); // Implement a method to get the next available product ID
+            // AddProductToDatabase(product);
+
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
